@@ -1,0 +1,10 @@
+{
+  "name": "Shadowsocks+V2Ray-plugin Rapid deployment",
+  "env": {
+     "AppName": {
+      "description": "Please enter the App Name filled in at the top to generate the configuration and QR code. If you don’t want to generate it, enter no",
+      "value": "no"
+    }
+  },
+  "stack": "container"
+ }
