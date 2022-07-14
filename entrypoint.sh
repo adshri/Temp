@@ -39,13 +39,13 @@ sed -e "/^#/d"\
     -e "$s"\
     /conf/nginx_ss.conf > /etc/nginx/conf.d/ss.conf
 
-if [ "$AppName" = "no" ]; then
+if [ "$AppUrl" = "no" ]; then
   echo "Aditya's VPN"
 else
   mkdir /wwwroot${QR_Path}
   touch /wwwroot${QR_PATH}/index.html
-  plugin=$(echo -n "v2ray;path=${V2_Path};host=${AppName}.herokuapp.com;tls" | sed -e 's/\//%2F/g' -e 's/=/%3D/g' -e 's/;/%3B/g')
-  ss="ss://$(echo -n ${ENCRYPT}:${PASSWORD} | base64 -w 0)@${AppName}.herokuapp.com:443?plugin=${plugin}" 
+  plugin=$(echo -n "v2ray;path=${V2_Path};host=${AppUrl};tls" | sed -e 's/\//%2F/g' -e 's/=/%3D/g' -e 's/;/%3B/g')
+  ss="ss://$(echo -n ${ENCRYPT}:${PASSWORD} | base64 -w 0)@${AppUrl}:443?plugin=${plugin}" 
   echo "${ss}" | tr -d '\n' > /wwwroot${QR_Path}/index.html
   echo -n "${ss}" | qrencode -s 6 -o /wwwroot${QR_Path}/vpn.png
 fi
